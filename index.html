@@ -138,7 +138,7 @@
 
     console.log(heal);
 
-    alert("Мана: " + mana + "\r\nЗдоровье: " + HP + "\r\nМеткость: " + accuracy + "\r\nУклонение: " + evasion + "\r\nУрон Броска щита: " + shieldDam + "\r\nИсцеление: " + heal + "\r\nБлок мечом: " + blocksword + "%" + "\r\nСияющий щит: " + radshield + "%" + "\r\nСтая воронов: " + flockofcrows + "\r\nБлагословление оружия: урон увеличен на " + blessing + "\r\nУдар в спину: урон увеличен в " + uvs + "\r\nШанс наложить дебафф: " + debchance + "%");
+    alert("Осталось атрибутов: " + attribleft + "\r\nНераспределённые атрибуты: " + attrib + "\r\nМана: " + mana + "\r\nЗдоровье: " + HP + "\r\nМеткость: " + accuracy + "\r\nУклонение: " + evasion + "\r\nУрон Броска щита: " + shieldDam + "\r\nИсцеление: " + heal + "\r\nБлок мечом: " + blocksword + "%" + "\r\nСияющий щит: " + radshield + "%" + "\r\nСтая воронов: " + flockofcrows + "\r\nБлагословление оружия: урон увеличен на " + blessing + "\r\nУдар в спину: урон увеличен в " + uvs + "\r\nШанс наложить дебафф: " + debchance + "%");
 
   }
 
@@ -256,8 +256,8 @@ function calculate(level){
     while(i < level){
         attribute +=  floor(i / 5 + 3)
         i += 1
+	}
     attribute += 31
-    }
     return "Нераспред. атрибуты:" + String(attribute)
 }
 function calcStat(level, strenght, dexterity, intuition, endurance, wisdom, luck){
@@ -266,43 +266,55 @@ function calcStat(level, strenght, dexterity, intuition, endurance, wisdom, luck
     attribute = 0
     i = 1
     while(i < level){
-        attribute +=  floor(i / 5 + 3)
+        attribute +=  Math.floor(i / 5 + 3)
         i += 1
-    attribute += 31
-    }
+	}
+    attribute += 31;
 
-    atrStr = 0
-    atrDex = 0
-    atrInt = 0
-    atrEnd = 0
-    atrWis = 0
-    atrLuck = 0
+    atrStr = 0;
+    atrDex = 0;
+    atrInt = 0;
+    atrEnd = 0;
+    atrWis = 0;
+    atrLuck = 0;
     
-    strenght = parseInt(strenght)
-    for (var i = 1, i <= strenght, i++){
-        atrStr +=  (i-1)//10 + 2
+    strenght = parseInt(strenght);
+	n = 1;
+    while (n < strenght){
+        atrStr +=  Math.floor((n-1)/10) + 2
+		n += 1
     }
-    dexterity = parseInt(dexterity)
-    for (var i = 1, i <= dexterity, i++){
-        atrDex += (i-1)//10 + 2
-    }
-    intuition = parseInt(intuition)
-    for (var i = 1, i <= intuition, i++){
-        atrInt += (i-1)//10 + 2
+	m = 1;
+    dexterity = parseInt(dexterity);
+    while (m < dexterity){
+        atrDex += Math.floor((m-1)/10) + 2
+		m += 1 
+	}
+    intuition = parseInt(intuition);
+	k = 1;
+    while (k < intuition){
+        atrInt += Math.floor((k-1)/10) + 2
+		k += 1
     }    
-    endurance = parseInt(endurance)
-    for (var i = 1, i <= endurance, i++){
-        atrEnd += (i-1)//10 + 2
+	u = 1;
+    endurance = parseInt(endurance);
+    while (u < endurance){
+        atrEnd += Math.floor((u-1)/10) + 2
+		u += 1
     }
-    wisdom = parseInt(wisdom)
-    for (var i = 1, i <= wisdom, i++){
-        atrWis += (i-1)//10 + 2
+	o = 1;
+    wisdom = parseInt(wisdom);
+    while (o < wisdom){
+        atrWis += Math.floor((o-1)/10) + 2
+		o += 1
     }
-    luck = parseInt(luck)
-    for (var i = 1, i <= luck, i++){
-        atrLuck += (i-1)//10 + 2
+	p = 1;
+    luck = parseInt(luck);
+    while (p < luck){
+        atrLuck += Math.floor((p-1)/10) + 2
+		p += 1
     }                                
-    res = attribute - atrStr - atrDex - atrInt - atrEnd - atrWis - atrLuck
-    return "Осталось атрибутов:" + String(res)
+    res = attribute - atrStr - atrDex - atrInt - atrEnd - atrWis - atrLuck;
+    return res
 }
 </script>
