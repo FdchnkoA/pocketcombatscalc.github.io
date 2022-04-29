@@ -279,15 +279,15 @@ function calcStat(level, strenght, dexterity, intuition, endurance, wisdom, luck
     atrLuck = 0
     
     strenght = parseInt(strenght)
-    for (var i = 1, i <= , i++){
+    for (var i = 1, i <= strenght, i++){
         atrStr +=  (i-1)//10 + 2
     }
     dexterity = parseInt(dexterity)
-    for (var i = 1, i <= , i++){
+    for (var i = 1, i <= dexterity, i++){
         atrDex += (i-1)//10 + 2
     }
     intuition = parseInt(intuition)
-    for (var i = 1, i <= , i++){
+    for (var i = 1, i <= intuition, i++){
         atrInt += (i-1)//10 + 2
     }    
     endurance = parseInt(endurance)
@@ -299,7 +299,7 @@ function calcStat(level, strenght, dexterity, intuition, endurance, wisdom, luck
         atrWis += (i-1)//10 + 2
     }
     luck = parseInt(luck)
-    for (var i = 1, i <= , i++){
+    for (var i = 1, i <= luck, i++){
         atrLuck += (i-1)//10 + 2
     }                                
     res = attribute - atrStr - atrDex - atrInt - atrEnd - atrWis - atrLuck
