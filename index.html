@@ -249,4 +249,60 @@ function debaffs(dexterity, debaffchance){
     chance = Math.floor((1 - ch)*100);
     return chance
 }
+function calculate(level){    
+    level = parseInt(level)
+    attribute = 0
+    i = 1
+    while(i < level){
+        attribute +=  floor(i / 5 + 3)
+        i += 1
+    attribute += 31
+    }
+    return "Нераспред. атрибуты:" + String(attribute)
+}
+function calcStat(level, strenght, dexterity, intuition, endurance, wisdom, luck){
+    
+    level = parseInt(level)
+    attribute = 0
+    i = 1
+    while(i < level){
+        attribute +=  floor(i / 5 + 3)
+        i += 1
+    attribute += 31
+    }
+
+    atrStr = 0
+    atrDex = 0
+    atrInt = 0
+    atrEnd = 0
+    atrWis = 0
+    atrLuck = 0
+    
+    strenght = parseInt(strenght)
+    for (var i = 1, i <= , i++){
+        atrStr +=  (i-1)//10 + 2
+    }
+    dexterity = parseInt(dexterity)
+    for (var i = 1, i <= , i++){
+        atrDex += (i-1)//10 + 2
+    }
+    intuition = parseInt(intuition)
+    for (var i = 1, i <= , i++){
+        atrInt += (i-1)//10 + 2
+    }    
+    endurance = parseInt(endurance)
+    for (var i = 1, i <= endurance, i++){
+        atrEnd += (i-1)//10 + 2
+    }
+    wisdom = parseInt(wisdom)
+    for (var i = 1, i <= wisdom, i++){
+        atrWis += (i-1)//10 + 2
+    }
+    luck = parseInt(luck)
+    for (var i = 1, i <= , i++){
+        atrLuck += (i-1)//10 + 2
+    }                                
+    res = attribute - atrStr - atrDex - atrInt - atrEnd - atrWis - atrLuck
+    return "Осталось атрибутов:" + String(res)
+}
 </script>
