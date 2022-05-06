@@ -81,6 +81,10 @@
               <label for="text-aa90" class="u-custom-font u-font-montserrat u-label u-label-10">Шанс наложить дебафф</label>
               <input type="number" min="1" max="50" placeholder="Введите общий шанс наложить дебафф" id="text-aa90" name="text-8" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" />
             </div>
+	    <div class="u-form-group u-form-group-11">
+              <label for="text-aa90" class="u-custom-font u-font-montserrat u-label u-label-10">Броня</label>
+              <input type="number" min="1" max="50" placeholder="Введите количество брони" id="text-aa91" name="text-10" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" />
+            </div>
             <div class="u-align-center u-form-group u-form-submit">
               <a href="#" class="u-active-palette-1-dark-1 u-border-2 u-border-active-black u-btn u-btn-submit u-button-style u-palette-1-light-1 u-btn-1">Рассчитать<br>
               </a>
@@ -122,7 +126,8 @@
     let luck = Number(document.getElementById('text-a87a').value);
     let shield = Number(document.getElementById('text-8e96').value);
     let debaffchance = Number(document.getElementById('text-aa90').value);
-
+    let armor = Number(document.getElementById('text-aa91').value);
+						    
     console.log(prof, level, wisdom, endurance);
     let mana = manaCalc(prof, level, wisdom);
     let HP = healthMax(prof, level, endurance);
@@ -138,7 +143,7 @@
     let debchance = debaffs(dexterity, debaffchance);
     let attribleft = calcStat(level, strenght, dexterity, intuition, endurance, wisdom, luck);
     let attrib = calculate(level);
-
+    let arm = Armorfunc(armor);
 
     alert("Осталось атрибутов: " + attribleft + "\r\Затраченные атрибуты: " + attrib + "\r\nМана: " + mana + "\r\nЗдоровье: " + HP + "\r\nМеткость: " + accuracy + "\r\nУклонение: " + evasion + "\r\nУрон Броска щита: " + shieldDam + "\r\nИсцеление: " + heal + "\r\nБлок мечом: " + blocksword + "%" + "\r\nСияющий щит: " + radshield + "%" + "\r\nСтая воронов: " + flockofcrows + "\r\nБлагословление оружия: урон увеличен на " + blessing + "\r\nУдар в спину: урон увеличен в " + uvs + "\r\nШанс наложить дебафф: " + debchance + "%");
 
@@ -261,6 +266,11 @@ function calculate(level){
 	}
     attribute += 31
     return attribute
+}
+
+function Armorfunc(armor){
+    armor2 = round(100 *(1-((4000+armor_)/((4000+armor_ * 10)))))
+    return armor2
 }
 function calcStat(level, strenght, dexterity, intuition, endurance, wisdom, luck){
     
