@@ -269,7 +269,7 @@ function calculate(level){
 }
 
 function Armorfunc(armor){
-    armor2 = round(100 *(1-((4000+armor_)/((4000+armor_ * 10)))))
+    armor2 = Math.round(100 *(1-((4000+armor)/((4000+armor * 10)))))
     return armor2
 }
 function calcStat(level, strenght, dexterity, intuition, endurance, wisdom, luck){
