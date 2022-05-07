@@ -75,10 +75,11 @@
             </div>
 	    <div class="u-form-group u-form-group-12">
               <label for="text-aa92" class="u-custom-font u-font-montserrat u-label u-label-10">Минимальный магический урон</label>
-              <input type="number" min="1" max="50" placeholder="Введите минимальный магический урон" id="text-aa92" name="text-12" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" />
-              <label for="text-aa93" class="u-custom-font u-font-montserrat u-label u-label-10">Максимальный магический урон</label>
-              <input type="number" min="1" max="50" placeholder="Введите максимальный магический урон" id="text-aa93" name="text-13" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" />            
-	    </div>
+              <input type="number" min="1" max="50" placeholder="Введите минимальный магический урон" id="mштMagicDamageEntry" name="text-12" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" />
+            </div>
+	    <div class="u-form-group u-form-group-13">
+	      <label for="text-aa93" class="u-custom-font u-font-montserrat u-label u-label-10">Максимальный магический урон</label>
+              <input type="number" min="1" max="50" placeholder="Введите максимальный магический урон" id="maxMagicDamageEntry" name="text-13" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" />
 	    <div class="u-form-group u-form-group-11">
               <label for="text-aa90" class="u-custom-font u-font-montserrat u-label u-label-10">Броня</label>
               <input type="number" min="1" max="50" placeholder="Введите количество брони" id="text-aa91" name="text-10" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" />
@@ -90,6 +91,8 @@
             <div class="u-form-group u-form-group-10">
               <label for="text-aa90" class="u-custom-font u-font-montserrat u-label u-label-10">Шанс наложить дебафф</label>
               <input type="number" min="1" max="50" placeholder="Введите общий шанс наложить дебафф" id="text-aa90" name="text-8" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" />
+	      <input type="number" name="bafs" value="LightEntry" /><span style="padding-left: 1em">Урон от света</span>
+	      <input type="number" name="bafs" value="staffSharpeningEntry" /><span style="padding-left: 1em">Заточка посоха</span>
 	      <input type="checkbox" name="bafs" value="RunaJiznetoka" /><span style="padding-left: 1em"> Руна Жизнетока</span>
 	      <input type="checkbox" name="bafs" value="Healstaff" /><span style="padding-left: 1em">Посох целителя</span>
 	      <input type="checkbox" name="bafs" value="Blessingstaff" /><span style="padding-left: 1em">Благословление</span>
@@ -157,7 +160,37 @@
     alert("Осталось атрибутов: " + attribleft + "\r\Затраченные атрибуты: " + attrib + "\r\nМана: " + mana + "\r\nЗдоровье: " + HP + "\r\nФиз.урон уменьшен на: " + arm + "%" + "\r\nМеткость: " + accuracy + "\r\nУклонение: " + evasion + "\r\nУрон Броска щита: " + shieldDam + "\r\nИсцеление: " + heal + "\r\nБлок мечом: " + blocksword + "%" + "\r\nСияющий щит: " + radshield + "%" + "\r\nСтая воронов: " + flockofcrows + "\r\nБлагословление оружия: урон увеличен на " + blessing + "\r\nУдар в спину: урон увеличен в " + uvs + "\r\nШанс наложить дебафф: " + debchance + "%");
 
   }
+function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, RunaJiznetoka, Healstaff, Blessingstaff){
+   
+   minheal = Math.round(4 *(level + (intuition + wisdom)/3))
+   minheal = Math.round(minheal + (minheal *(LightEntry /100)))
+   
+   if Healstaff == True:
+       minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.025) + minMagicDamageEntry))
+       if RunaJiznetoka == True:
+           minheal = Math.round(minheal + (minheal * 30)/100)
 
+   if Blessingstaff == True:
+        minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.05) + minMagicDamageEntry))
+        if RunaJiznetoka == True:
+            minheal = Math.round(minheal + (minheal * 30)/100)
+       
+   maxheal = Math.round(4 *(level + (intuition + wisdom)/2))
+   maxheal = Math.round(maxheal + (maxheal *(LightEntry /100)))
+   
+   if Healstaff == True:
+       maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.025) + maxMagicDamageEntry))
+       if RunaJiznetoka == True:
+           maxheal = Math.round(maxheal + (maxheal * 30)/100)
+       
+   if Blessingstaff == True:
+        maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.05) + maxMagicDamageEntry))
+        if RunaJiznetoka == True:
+                 maxheal = Math.round(maxheal + (maxheal*30)/100)
+                 
+
+    return String(minheal) + " - " + String(maxheal)
+}
 function manaCalc(prof, level, wisdom){
     let koefMana = (100 + wisdom)/100;
     let sumMana = 0;
@@ -234,10 +267,7 @@ function blockwithsword(intuition){
     blocksword = intuition//2 + 10;
     return blocksword
 }
-function Healing(level, intuition, wisdom){
-    healer = parseInt(4*(level + (wisdom + intuition)/2));
-    return healer
-}
+
 function blessingWeapon(intuition, wisdom){
     blessing = 5 + (wisdom + Math.floor((intuition/2)-38)/2);
     if (blessing <= 5){
