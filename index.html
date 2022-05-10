@@ -177,38 +177,38 @@
   }
 function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, staffSharpeningEntry, RunaJiznetoka, bafs){
    
-   minheal = Math.floor(4 *(level + (intuition + wisdom)/3))
+   minheal = Math.round(4 *(level + (intuition + wisdom)/3))
    console.log(minheal)
-   minheal = Math.floor(minheal + (minheal *(LightEntry /100)))
+   minheal = Math.round(minheal + (minheal *(LightEntry /100)))
    console.log(minheal)
    if (bafs == 1){
-       minheal = Math.floor(minheal + (minheal * (staffSharpeningEntry * 0.025) + minMagicDamageEntry))
+       minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.025) + minMagicDamageEntry))
        if (RunaJiznetoka){
-           minheal = Math.floor(minheal + (minheal * 30)/100)
+           minheal = Math.round(minheal + (minheal * 30)/100)
        }
    
    }  
    if (bafs == 2){
-        minheal = Math.floor(minheal + (minheal * (staffSharpeningEntry * 0.05) + minMagicDamageEntry))
+        minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.05) + minMagicDamageEntry))
         if (RunaJiznetoka){
-            minheal = Math.floor(minheal + (minheal * 30)/100)
+            minheal = Math.round(minheal + (minheal * 30)/100)
         }
    }
    console.log(minheal, bafs);
    
-   maxheal = Math.floor(4 *(level + (intuition + wisdom)/2))
-   maxheal = Math.floor(maxheal + (maxheal *(LightEntry /100)))
+   maxheal = Math.round(4 *(level + (intuition + wisdom)/2))
+   maxheal = Math.round(maxheal + (maxheal *(LightEntry /100)))
    
    if (bafs == 1){
-       maxheal = Math.floor(maxheal + (maxheal * (staffSharpeningEntry * 0.025) + maxMagicDamageEntry))
+       maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.025) + maxMagicDamageEntry))
        if (RunaJiznetoka){
-           maxheal = Math.floor(maxheal + (maxheal * 30)/100)
+           maxheal = Math.round(maxheal + (maxheal * 30)/100)
        }
    }   
    if (bafs == 2){
-        maxheal = Math.floor(maxheal + (maxheal * (staffSharpeningEntry * 0.05) + maxMagicDamageEntry))
+        maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.05) + maxMagicDamageEntry))
         if (RunaJiznetoka){
-                 maxheal = Math.floor(maxheal + (maxheal*30)/100)
+                 maxheal = Math.round(maxheal + (maxheal*30)/100)
         }  
     }
     console.log(maxheal, bafs);
