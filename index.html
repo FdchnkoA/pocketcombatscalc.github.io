@@ -94,8 +94,8 @@
 	      <input type="number" name="bafs" value="LightEntry" /><span style="padding-left: 1em">Урон от света</span>
 	      <input type="number" name="bafs" value="staffSharpeningEntry" /><span style="padding-left: 1em">Заточка посоха</span>
 	      <input type="checkbox" name="bafs" value="RunaJiznetoka" /><span style="padding-left: 1em"> Руна Жизнетока</span>
-	      <input type="radio" name="bafs" id="Healstaff" /><span style="padding-left: 1em">Посох целителя</span>
-	      <input type="radio" name="bafs" id="Blessingstaff" /><span style="padding-left: 1em">Благословление</span>
+	      <input type="radio" name="bafs" id="Healstaff" value="1"/><span style="padding-left: 1em">Посох целителя</span>
+	      <input type="radio" name="bafs" id="Blessingstaff" value="2" /><span style="padding-left: 1em">Благословление</span>
             </div>
             <div class="u-align-center u-form-group u-form-submit">
               <a href="#" class="u-active-palette-1-dark-1 u-border-2 u-border-active-black u-btn u-btn-submit u-button-style u-palette-1-light-1 u-btn-1">Рассчитать<br>
@@ -172,28 +172,30 @@ function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEn
    minheal = Math.round(4 *(level + (intuition + wisdom)/3))
    minheal = Math.round(minheal + (minheal *(LightEntry /100)))
    
-   if (Healstaff == True){
+   if (bafs == 1){
        minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.025) + minMagicDamageEntry))
-       if (RunaJiznetoka == True){
+       if (RunaJiznetoka.checked){
            minheal = Math.round(minheal + (minheal * 30)/100)
        }
    }  
-   if (Blessingstaff == True){
+   if (bafs == 2){
         minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.05) + minMagicDamageEntry))
-        if RunaJiznetoka == True:
+        if (RunaJiznetoka.checked){
             minheal = Math.round(minheal + (minheal * 30)/100)
+        }
    }   
    maxheal = Math.round(4 *(level + (intuition + wisdom)/2))
    maxheal = Math.round(maxheal + (maxheal *(LightEntry /100)))
    
-   if (Healstaff == True){
+   if (bafs == 1){
        maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.025) + maxMagicDamageEntry))
-       if RunaJiznetoka == True:
+       if (RunaJiznetoka.checked){
            maxheal = Math.round(maxheal + (maxheal * 30)/100)
+       }
    }   
-   if (Blessingstaff == True){
+   if (bafs == 2){
         maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.05) + maxMagicDamageEntry))
-        if RunaJiznetoka == True){
+        if (RunaJiznetoka.checked){
                  maxheal = Math.round(maxheal + (maxheal*30)/100)
         }  
     }  
