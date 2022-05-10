@@ -104,6 +104,7 @@
 	      <input type="checkbox" name="RunaJiz" id="RunaJiznetoka" /><span style="padding-right: 1em"> Руна Жизнетока</span>
 	      <input type="radio" name="bafs" id="Healstaff" value="1"/><span style="padding-right: 1em">Посох целителя</span>
 	      <input type="radio" name="bafs" id="Blessingstaff" value="2" /><span style="padding-right: 1em">Благословление</span>
+	      <input type="radio" name="bafs" id="None" value="0" checked/><span style="padding-right: 1em">Ничего</span>
 	    </div>
             <div class="u-align-center u-form-group u-form-submit">
               <a href="#" class="u-active-palette-1-dark-1 u-border-2 u-border-active-black u-btn u-btn-submit u-button-style u-palette-1-light-1 u-btn-1">Рассчитать<br>
@@ -152,7 +153,7 @@
     let LightEntry = Number(document.getElementById('LightEntry').value);
     let staffSharpeningEntry = Number(document.getElementById('staffSharpeningEntry').value);
     let RunaJiznetoka = document.getElementById('RunaJiznetoka').checked;
-						    
+    let bafs = document.querySelector('input[name="bafs"]:checked').value;
 						    
 						    
     let mana = manaCalc(prof, level, wisdom);
@@ -163,7 +164,7 @@
     let accuracy = accuracyplayer(level, intuition, luck);
     let radshield = radiantshield(strenght, shield);
     let blocksword = blockwithsword(intuition);
-    let heal = Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, RunaJiznetoka, Healstaff, Blessingstaff, bafs);
+    let heal = Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, RunaJiznetoka, Healstaff, Blessingstaff);
     let blessing = blessingWeapon(intuition, wisdom);
     let flockofcrows = crows(intuition, wisdom);
     let debchance = debaffs(dexterity, debaffchance);
@@ -174,7 +175,7 @@
     alert("Осталось атрибутов: " + attribleft + "\r\Затраченные атрибуты: " + attrib + "\r\nМана: " + mana + "\r\nЗдоровье: " + HP + "\r\nФиз.урон уменьшен на: " + arm + "%" + "\r\nМеткость: " + accuracy + "\r\nУклонение: " + evasion + "\r\nУрон Броска щита: " + shieldDam + "\r\nИсцеление: " + heal + "\r\nБлок мечом: " + blocksword + "%" + "\r\nСияющий щит: " + radshield + "%" + "\r\nСтая воронов: " + flockofcrows + "\r\nБлагословление оружия: урон увеличен на " + blessing + "\r\nУдар в спину: урон увеличен в " + uvs + "\r\nШанс наложить дебафф: " + debchance + "%");
 
   }
-function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, RunaJiznetoka, Healstaff, Blessingstaff, bafs){
+function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, RunaJiznetoka, bafs){
    
    minheal = Math.round(4 *(level + (intuition + wisdom)/3))
    minheal = Math.round(minheal + (minheal *(LightEntry /100)))
