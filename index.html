@@ -101,7 +101,7 @@
 	      <input type="number"  min="1" max="10" name="bafs" value="staffSharpeningEntry" placeholder="Введите заточку посоха" id="staffSharpeningEntry" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"/>
 	    </div>
 	    <div class="u-form-group u-form-group-13">
-	      <input type="checkbox" value="RunaJiznetoka" /><span style="padding-right: 1em"> Руна Жизнетока</span>
+	      <input type="checkbox" name="RunaJiz" id="RunaJiznetoka" /><span style="padding-right: 1em"> Руна Жизнетока</span>
 	      <input type="radio" name="bafs" id="Healstaff" value="1"/><span style="padding-right: 1em">Посох целителя</span>
 	      <input type="radio" name="bafs" id="Blessingstaff" value="2" /><span style="padding-right: 1em">Благословление</span>
 	    </div>
@@ -151,7 +151,7 @@
     let maxMagicDamageEntry = Number(document.getElementById('maxMagicDamageEntry').value);
     let LightEntry = Number(document.getElementById('LightEntry').value);
     let staffSharpeningEntry = Number(document.getElementById('staffSharpeningEntry').value);
- 
+    let RunaJiznetoka = document.getElementById('RunaJiznetoka').checked;
 						    
 						    
 						    
@@ -163,7 +163,7 @@
     let accuracy = accuracyplayer(level, intuition, luck);
     let radshield = radiantshield(strenght, shield);
     let blocksword = blockwithsword(intuition);
-    let heal = Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, RunaJiznetoka.checked, Healstaff, Blessingstaff, bafs);
+    let heal = Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, , Healstaff, Blessingstaff, bafs);
     let blessing = blessingWeapon(intuition, wisdom);
     let flockofcrows = crows(intuition, wisdom);
     let debchance = debaffs(dexterity, debaffchance);
@@ -181,13 +181,13 @@ function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEn
    
    if (bafs == 1){
        minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.025) + minMagicDamageEntry))
-       if (RunaJiznetoka.checked){
+       if (RunaJiznetoka){
            minheal = Math.round(minheal + (minheal * 30)/100)
        }
    }  
    if (bafs == 2){
         minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.05) + minMagicDamageEntry))
-        if (RunaJiznetoka.checked){
+        if (RunaJiznetoka){
             minheal = Math.round(minheal + (minheal * 30)/100)
         }
    }   
@@ -196,13 +196,13 @@ function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEn
    
    if (bafs == 1){
        maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.025) + maxMagicDamageEntry))
-       if (RunaJiznetoka.checked){
+       if (RunaJiznetoka){
            maxheal = Math.round(maxheal + (maxheal * 30)/100)
        }
    }   
    if (bafs == 2){
         maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.05) + maxMagicDamageEntry))
-        if (RunaJiznetoka.checked){
+        if (RunaJiznetoka){
                  maxheal = Math.round(maxheal + (maxheal*30)/100)
         }  
     }  
