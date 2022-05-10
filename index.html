@@ -172,30 +172,32 @@ function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEn
    minheal = Math.round(4 *(level + (intuition + wisdom)/3))
    minheal = Math.round(minheal + (minheal *(LightEntry /100)))
    
-   if Healstaff == True:
+   if (Healstaff == True){
        minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.025) + minMagicDamageEntry))
-       if RunaJiznetoka == True:
+       if (RunaJiznetoka == True){
            minheal = Math.round(minheal + (minheal * 30)/100)
-
-   if Blessingstaff == True:
+       }
+   }  
+   if (Blessingstaff == True){
         minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.05) + minMagicDamageEntry))
         if RunaJiznetoka == True:
             minheal = Math.round(minheal + (minheal * 30)/100)
-       
+   }   
    maxheal = Math.round(4 *(level + (intuition + wisdom)/2))
    maxheal = Math.round(maxheal + (maxheal *(LightEntry /100)))
    
-   if Healstaff == True:
+   if (Healstaff == True){
        maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.025) + maxMagicDamageEntry))
        if RunaJiznetoka == True:
            maxheal = Math.round(maxheal + (maxheal * 30)/100)
-       
-   if Blessingstaff == True:
+   }   
+   if (Blessingstaff == True){
         maxheal = Math.round(maxheal + (maxheal * (staffSharpeningEntry * 0.05) + maxMagicDamageEntry))
-        if RunaJiznetoka == True:
+        if RunaJiznetoka == True){
                  maxheal = Math.round(maxheal + (maxheal*30)/100)
-                 
-    fin = String(minheal) + " - " + String(maxheal)
+        }  
+    }  
+    fin = String(minheal) + " - " + String(maxheal);
     return fin
 }
 function manaCalc(prof, level, wisdom){
