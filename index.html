@@ -178,8 +178,9 @@
 function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEntry, LightEntry, RunaJiznetoka, bafs){
    
    minheal = Math.round(4 *(level + (intuition + wisdom)/3))
+   console.log(minheal)
    minheal = Math.round(minheal + (minheal *(LightEntry /100)))
-   
+   console.log(minheal)
    if (bafs == 1){
        minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.025) + minMagicDamageEntry))
        if (RunaJiznetoka){
