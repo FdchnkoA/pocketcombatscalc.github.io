@@ -185,13 +185,16 @@ function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEn
        if (RunaJiznetoka){
            minheal = Math.round(minheal + (minheal * 30)/100)
        }
+   
    }  
    if (bafs == 2){
         minheal = Math.round(minheal + (minheal * (staffSharpeningEntry * 0.05) + minMagicDamageEntry))
         if (RunaJiznetoka){
             minheal = Math.round(minheal + (minheal * 30)/100)
         }
-   }   
+   }
+   console.log(minheal);
+   
    maxheal = Math.round(4 *(level + (intuition + wisdom)/2))
    maxheal = Math.round(maxheal + (maxheal *(LightEntry /100)))
    
@@ -206,8 +209,11 @@ function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEn
         if (RunaJiznetoka){
                  maxheal = Math.round(maxheal + (maxheal*30)/100)
         }  
-    }  
+    }
+    console.log(maxheal);
+    
     fin = String(minheal) + " - " + String(maxheal);
+    console.log(fin);			 
     return fin
 }
 function manaCalc(prof, level, wisdom){
