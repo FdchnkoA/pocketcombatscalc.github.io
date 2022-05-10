@@ -193,7 +193,7 @@ function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEn
             minheal = Math.round(minheal + (minheal * 30)/100)
         }
    }
-   console.log(minheal);
+   console.log(minheal, bafs);
    
    maxheal = Math.round(4 *(level + (intuition + wisdom)/2))
    maxheal = Math.round(maxheal + (maxheal *(LightEntry /100)))
@@ -210,7 +210,7 @@ function Healing(level, intuition, wisdom, minMagicDamageEntry, maxMagicDamageEn
                  maxheal = Math.round(maxheal + (maxheal*30)/100)
         }  
     }
-    console.log(maxheal);
+    console.log(maxheal, bafs);
     
     fin = String(minheal) + " - " + String(maxheal);
     console.log(fin);			 
